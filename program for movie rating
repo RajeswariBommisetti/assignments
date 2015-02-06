@@ -1,0 +1,49 @@
+movies_list = { "ishq" => "4", "mummy" => "3"}
+
+puts "What would you like to do?"
+puts "Type 'add' to add a movie."
+puts "Type 'update' to update a movie."
+puts "Type 'display' to display all movies."
+puts "Type 'delete' to delete a movie."
+
+choice = gets.chomp.downcase
+case choice
+when 'add'
+ puts "What movie do you want to add?"
+movie_name = gets.chomp
+if movies_list.has_key?Movie_name
+	puts "the movie already exist with movie rating #{movies_list[Movie_name]}"
+else
+Puts "what is  the rating?( rating is between 0 to 4)"
+rating = gets.chomp
+movies_list[movie_name] = rating.to_i
+puts "#{movie_name} added with a rating of #{rating}"
+end
+when 'update'
+  puts "What movie do you want to update?"
+  movie_name = gets.chomp
+  if movies_list.has_key?movie_name
+    puts "What's the new rating? (Type a number 0 to 4.)"
+    rating = gets.chomp
+    movies_list[movie_name] = rating.to_i
+    puts "#{movie_name} has been updated with new rating of #{rating}."
+  else
+   puts "Movie not found!"
+end
+when 'display'
+  movies_list.each do |movie, rating|
+    puts "#{movie}: #{rating}"
+  end
+when 'delete'
+  puts "What movie do you want to delete?"
+  movie_name = gets.chomp
+ if movies_list.has_key?movie_name
+    movies_list.delete(movie_name)
+    puts "#{movie_name} has been removed."
+  else
+     puts "Movie not found"
+  end
+
+end
+
+
